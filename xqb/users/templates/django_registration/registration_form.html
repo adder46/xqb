@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'users/css/registration_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="header">
+        Registration via E-mail address
+    </div>
+    <div class="form-wrapper">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="field-wrapper">
+                <div class="first-name">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                    {{ form.first_name.errors }}
+                </div>
+                <div class="last-name">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                    {{ form.last_name.errors }}
+                </div>
+                <div class="email">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+                <div class="username">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+                <div class="password1">
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                </div>
+                <div class="password2">
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                </div>
+            </div>
+            <div class="submit-button">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+{% block css %}
+{% bootstrap_css %}
+<link type="text/css" rel="stylesheet" href="{% static 'notes/css/note_form.css' %}">
+<link type="text/css" media="all" rel="stylesheet" href="{% static 'plugins/css/ace.min.css' %}" />
+<link type="text/css" media="all" rel="stylesheet" href="{% static 'plugins/css/resizable.min.css' %}" />
+<link type="text/css" media="all" rel="stylesheet" href="{% static 'martor/css/martor.bootstrap.min.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'notes/css/tags_input.css' %}" />
+{% endblock %}
+
+{% block js %}
+{% bootstrap_javascript %}
+<script type="text/javascript" src="{% static 'notes/js/tagsView.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/typo.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/spellcheck.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'martor/js/martor.bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'notes/js/tagsInput.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="form-wrapper">
+  <div class="form-header">
+    Create a new note
+  </div>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="field-wrapper">
+      <div class="title">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+        {{ form.title.errors }}
+      </div>
+      <div class="description">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+        {{ form.description.errors }}
+      </div>
+      <div class="notebook">
+        {{ form.notebook.label_tag }}
+        {{ form.notebook }}
+        {{ form.notebook.errors }}
+      </div>
+      <div class="tags">
+        {{ form.tags.label_tag }}
+        {{ form.tags }}
+        {{ form.tags.errors }}
+      </div>
+    </div>
+    <div class="submit-button">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+{% endblock %}

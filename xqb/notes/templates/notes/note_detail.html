@@ -1,0 +1,14 @@
+{% load martortags %}
+
+<h3>{{ note.title }}</h3>
+<div class="tags">
+  {% for tag in note.tags.all %}
+  <div class="badge">
+    {{ tag }}
+  </div>
+  {% endfor %}
+</div>
+<div class="description martor-preview">
+  {{ note.description|safe_markdown }}
+</div>
+

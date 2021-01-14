@@ -1,0 +1,132 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600);
+@font-face { font-family: "ionicons"; src: url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1"); src: url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"), url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.ttf?v=2.0.1") format("truetype"), url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.woff?v=2.0.1") format("woff"), url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg"); font-weight: normal; font-style: normal; }
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #F9FAFC;
+  font-family: 'Source Sans Pro';
+  font-size: 14px;
+  position: fixed;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+.menu {
+  padding: 30px 0;
+}
+
+.menu > li {
+  position: relative;
+  color: #444444;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+}
+
+.menu > li:hover {
+  background-color: #F4F4F5;
+}
+
+.menu > li > a {
+  display: block;
+  color: #444444;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu > li > a:hover {
+  color: black;
+}
+
+.submenu {
+  display: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.submenu li:first-child {
+  padding: 0.1rem 0 0 1.5rem;
+}
+
+.submenu li:last-child {
+  padding: 0 0 0.1rem 1.5rem;
+}
+
+.submenu li {
+  padding: 0.5rem 1.5rem;
+}
+
+.submenu > li > a {
+  display: block;
+  color: #626262;
+  text-decoration: none;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+}
+
+.submenu > li > a:hover {
+  color: black;
+}
+
+.submenu > li {
+  font-weight: normal !important;
+}
+
+.arrow {
+  display: inline-block;
+  width: 10px;
+  transition: all 0.5s ease-in-out;
+  transform-origin: left center;
+  font-size: 0.5em;
+  position: absolute;
+  right: 0.75em;
+}
+
+.arrow:after {
+  content: '\f125';
+  font-family: 'ionicons';
+  color: #444444;
+}
+
+.rotated {
+  transform: rotate(90deg);
+  transition: transform 0.5s ease;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item > span:first-child {
+  flex: 1;
+}
+
+.icon {
+  background-repeat: no-repeat;
+  padding-left: 25px;    
+}
+
+.no-submenu a {
+  padding: 0 1.5rem;
+}
+
+#dashboard span  {
+  background-image: url(../img/dashboard.svg);
+}
+
+#notes > div > span:first-child {
+  background-image: url(../img/notes.svg);
+}
+
+#account > div > span:first-child {
+  background-image: url(../img/profile.svg);
+}

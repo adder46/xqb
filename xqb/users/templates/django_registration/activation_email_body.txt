@@ -1,0 +1,5 @@
+To activate your account, click the link below:
+
+{{ scheme }}://{{ site }}{% url 'django_registration_activate' activation_key=activation_key %}
+
+You have {{ expiration_days }} days left to activate your account.

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/ffolders.css' %}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'notebooks/css/notebook_list.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% url 'js_reverse' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+{% if notebooks %}
+<div class="notebooks">
+  {% for notebook in notebooks %}
+  <a href="{% url 'notes:note-list' notebook.pk %}">
+    <div class="ffolder medium cyan">
+      <div class="notebook-info">
+        <span>{{ notebook.name }}</span>
+        <span class="note-count">{{ notebook.note_set.count }} items</span>    
+      </div>
+    </div>    
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="information">
+  <div class="information-header">
+    Info
+  </div>
+  <div class="information-wrapper">
+    No notebooks yet.<br>
+    <a href="{% url 'notebooks:notebook-create' %}">Create your first notebook!</a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

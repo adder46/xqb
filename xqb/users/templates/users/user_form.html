@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'users/css/user_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="header">
+        Update profile
+    </div>
+    <div class="form-wrapper">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="field-wrapper">
+                <div class="first-name">
+                    {{ user_form.first_name.label_tag }}
+                    {{ user_form.first_name }}
+                </div>
+                <div class="last-name">
+                    {{ user_form.last_name.label_tag }}
+                    {{ user_form.last_name }}
+                </div>
+                <div class="email">
+                    {{ user_form.email.label_tag }}
+                    {{ user_form.email }}
+                </div>
+                <div class="username">
+                    {{ user_form.username.label_tag }}
+                    {{ user_form.username }}
+                </div>
+                <div class="timezone">
+                    {{ profile_form.timezone.label_tag }}            
+                    {{ profile_form.timezone }}
+                </div>
+                <div class="currency">
+                    {{ profile_form.currency.label_tag }}            
+                    {{ profile_form.currency }}
+                </div>
+                <a href="{% url 'password_reset' %}">Reset your password</a>
+            </div>
+            <div class="submit-button">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

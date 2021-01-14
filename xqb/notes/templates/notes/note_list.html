@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load martortags %}
+{% load get_note_ago %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'notes/css/note_list.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'notes/css/note_detail.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'notes/css/search_box.css' %}">
+<link type="text/css" media="all" rel="stylesheet" href="{% static 'plugins/css/ace.min.css' %}" />
+<link type="text/css" media="all" rel="stylesheet" href="{% static 'plugins/css/semantic.min.css' %}" />
+<link type="text/css" media="all" rel="stylesheet" href="{% static 'plugins/css/resizable.min.css' %}" />
+<link type="text/css" media="all" rel="stylesheet" href="{% static 'martor/css/martor.min.css' %}" />
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% url 'js_reverse' %}"></script>
+<script type="text/javascript" src="{% static 'notes/js/searchNotes.js' %}"></script>
+<script type="text/javascript" src="{% static 'notes/js/showNote.js' %}"></script>
+<script type="text/javascript" src="{% static 'notes/js/searchBox.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/semantic.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'martor/js/martor.min.js' %}"></script>
+<script>
+  $(document).ready(function() {
+    $('pre').each(function(i, block){
+      hljs.highlightBlock(block);
+    });    
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+{% if notes %}
+<div class="notes-container">
+  <div class="top-container">
+      <div class="search-bar">
+          <input id="search-box" type="text" name="q" placeholder="Search notes">
+          <span>&#xf2f5;</span>
+          <div class="by">
+              <span class="selected">All</span>
+              <div class="options" by="all">
+                  <div id="all" class="option">All</div>
+                  <div id="title" class="option">Title</div>
+                  <div id="description" class="option">Description</div>
+                  <div id="tags" class="option">Tags</div>
+              </div>
+          </div>
+      </div>
+      <div class="new-note">
+          <a href="{% url 'notes:note-create' notebook_pk=notebook %}">&#xf381;</a>
+      </div>
+  </div>
+  <div class="notes">
+    {% for note in notes %}
+      <div id="{{ note.pk }}" class="note">
+        <div class="note-ago">
+          {% note_ago user note %}
+        </div>
+        <div class="note-wrapper">
+          <div class="note-title">
+            {{ note.title }}
+          </div>
+          <div class="note-description martor-preview">
+            {{ note.description|truncatechars:255 }}
+          </div>
+          <div class="tags">
+            {% for tag in note.tags.all %}
+            <div class="badge">
+              {{ tag }}
+            </div>
+            {% endfor %}
+          </div>
+          <div class="actions">
+            <a href="{% url 'notes:note-update' notebook_pk=note.notebook.pk note_pk=note.pk %}">Update</a>
+            <a href="{% url 'notes:note-delete' notebook_pk=note.notebook.pk note_pk=note.pk %}">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="information">
+  <div class="information-header">
+    Info
+  </div>
+  <div class="information-wrapper">
+    No notes yet.<br>
+    <a href="{% url 'notes:note-create' notebook_pk=notebook %}">Create your first note!</a>
+  </div>
+</div>
+{% endif %}
+<div class="note-container">
+</div>
+{% endblock %}
+

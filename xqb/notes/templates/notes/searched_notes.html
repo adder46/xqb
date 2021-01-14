@@ -1,0 +1,29 @@
+{% load martortags %}
+{% load get_note_ago %}
+
+{% for note in notes %}
+<div id="{{ note.pk }}" class="note">
+  <div class="note-ago">
+    {% note_ago user note %}
+  </div>
+  <div class="note-wrapper">
+    <div class="note-title">
+      {{ note.title }}
+    </div>
+    <div class="note-description martor-preview">
+      {{ note.description|truncatechars:255|safe_markdown }}
+    </div>
+    <div class="tags">
+      {% for tag in note.tags.all %}
+      <div class="badge">
+        {{ tag }}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="actions">
+      <a href="{% url 'notes:note-update' notebook_pk=note.notebook.pk note_pk=note.pk %}">Update</a>
+      <a href="{% url 'notes:note-delete' notebook_pk=note.notebook.pk note_pk=note.pk %}">Delete</a>
+    </div>
+  </div>
+</div>
+{% endfor %}

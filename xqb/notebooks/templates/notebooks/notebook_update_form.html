@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'notebooks/css/notebook_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-wrapper">
+  <div class="form-header">
+    Update notebook
+  </div>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="field-wrapper">
+      <div class="name">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+        {{ form.name.errors }}
+      </div>
+    </div>
+    <div class="submit-button">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+{% endblock %}

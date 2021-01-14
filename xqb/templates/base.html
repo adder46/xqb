@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>xqb</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    {% block css %}
+    {% endblock %}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/sidebar.js' %}"></script>
+    {% block js %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            {% include 'sidebar.html' %}
+        </div>
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

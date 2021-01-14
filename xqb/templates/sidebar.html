@@ -1,0 +1,40 @@
+<div class="sidebar">
+    <nav>
+      <ul class="menu">
+          <li id="dashboard" class="no-submenu">
+            <div class="menu-item">
+              <span class="icon">Dashboard</span>
+              <span></span>
+            </div>
+          </li>
+          <li id="notes" class="has-submenu">
+            <div class="menu-item">
+                <span class="icon">Notes</span>
+                <span class="arrow"></span>
+            </div>
+            <ul class="submenu">
+                <li><a href="{% url 'notes:note-create' %}">New note</a></li>
+                <li><a href="{% url 'notebooks:notebook-create' %}">New notebook</a></li>
+                <li><a href="{% url 'notebooks:notebook-list' %}">View notebooks</a></li>
+            </ul>
+        </li>
+        <li id="account" class="has-submenu">
+          <div class="menu-item">
+            <span class="icon">Account</span>
+            <span class="arrow"></span>
+          </div>
+          {% if user.is_authenticated %}
+          <ul class="submenu">
+            <li><a href="{% url 'users:settings' %}">Settings</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+          {% else %}
+          <ul class="submenu">
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'django_registration_register' %}">Register</a></li>
+          </ul>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+  </div>

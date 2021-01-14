@@ -1,0 +1,14 @@
+.notebooks {
+  width: 85%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.notebook-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

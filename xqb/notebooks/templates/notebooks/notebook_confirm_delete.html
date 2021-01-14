@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'notebooks/css/notebook_confirm_delete.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-wrapper">
+  <div class="form-header">
+    Delete notebook
+  </div>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="field-wrapper">
+      <p>Are you sure you want to delete notebook "{{ object }}"?</p>
+    </div>
+    <div class="submit-button">
+      <input type="submit" value="Confirm">
+      <a href="{% url 'notebooks:notebook-list' %}">No, go back</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

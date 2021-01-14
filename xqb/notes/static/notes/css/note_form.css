@@ -1,0 +1,62 @@
+.content {
+  background-color: #ECF0F5;
+}
+
+.form-wrapper {
+  margin: 50px auto;
+  background-color: white;
+  width: 1000px;
+}
+
+.field-wrapper {
+  padding: 50px;
+}
+
+.title,
+.description,
+.notebook,
+.submit-button {
+  margin-bottom: 15px;
+}
+
+form textarea {
+  height: 500px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 900px;
+  box-sizing: border-box;
+  padding: .375rem .75rem;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.submit-button {
+  text-align: right;
+  border-top: 1px solid #F9FAFC;
+  padding: 20px;
+}
+
+.submit-button input {
+  width: 100px;
+  background-color: #00a65a;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 0.5em;
+  border: 1px solid #008d4c;
+}
+
+.form-header {
+  border-top: 3px solid #348ceb;   
+  border-bottom: 1px solid #F9FAFC;
+  padding: 25px;
+  font-size: 20px;
+  font-weight: bold;   
+}
+

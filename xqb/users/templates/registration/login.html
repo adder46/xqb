@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'users/js/closeButton.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class='login-container'>
+        {% if form.non_field_errors %}
+        <div class="error-wrapper">
+            <div class="error-wrapper-top-row">
+                <h3>Wrong username and/or password</h3>
+                <button id="close" class="close-button">
+                    <span>x</span>
+                </button>
+            </div>
+            {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+            <p>Enter your username that you used to sign up for xqb (e.g. JohnDoe). Don't enter your e-mail address because login will not be successfull.</p>
+            <p>If you forgot your username or password, click <a href="{% url 'password_reset' %}">HERE</a></p>
+            <p>If you still don't have an account, please join us :-)<br>Create your account for free <a href="{% url 'django_registration_register' %}">HERE</a></p>
+        </div>
+        {% endif %}
+        <div class='header'>
+            Login
+        </div>
+        <div class="form-wrapper">
+            <form method="post">
+                {% csrf_token %}
+                <div class="field-wrapper">
+                    <div class="username">
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                        {{ form.username.errors }}
+                    </div>
+                    <div class="password">
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                        {{ form.password.errors }}
+                    </div>
+                </div>
+                <div class="submit-button">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class='signup-container'>
+        <div class='header'>
+            Still don't have an account?
+        </div>
+        <p>
+            Create an account for free today and bring your notetaking to next level!
+        </p>
+        <div class="submit-button">
+            <a href="{% url 'django_registration_register' %}" class="button button-register">Register</a>    
+        </div>
+    </div>
+</div>
+{% endblock %}

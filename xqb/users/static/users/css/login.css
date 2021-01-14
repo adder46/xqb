@@ -1,0 +1,122 @@
+.container {
+  background-color: #ECF0F5;
+}
+
+.login-container,
+.signup-container {
+  background-color: white;
+  width: 500px;
+  border-top: 2px solid #3C8DBC;
+}
+
+.signup-container p {
+  padding: 0 15px;
+  text-align: left;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 500px 500px;
+  grid-column-gap: 50px;
+  text-align: left;
+  margin: 50px auto;
+  width: 1050px;
+}
+
+.form-wrapper {
+  border-top: 1px solid #F9FAFC;
+}
+
+.field-wrapper {
+  padding: 2em;
+  box-sizing: border-box;
+  width: 500px;
+}
+
+.header {
+  border-bottom: 1px solid #F9FAFC;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.error-wrapper {
+  background-color: #F2DEDE;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  color: #a94442;
+  font-size: 14px;
+}
+
+.error-wrapper-top-row {
+  display: grid;
+  grid-template-columns: 460px 20px;
+}
+
+.error-wrapper-top-row > h3 {
+  margin-top: 10px;
+  color: #495863;
+  font-size: 19px;
+  line-height: 20px;
+}
+
+.close-button {
+  border: none;
+  background-color: #F2DEDE;
+  color: #a94442;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 0;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #685863;
+}
+
+.error-wrapper a {
+  color: #206996;
+}
+
+.username,
+.password {
+  display: grid;
+  grid-template-columns: 100px 315px;
+  align-items: center;
+  grid-column-gap: 15px;
+}
+
+.username label,
+.password label {
+  text-align: right;
+  font-weight: bold;
+}
+
+.username {
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  border-top: 1px solid #F9FAFC;
+  text-align: right;
+  padding: 15px;
+}
+
+.submit-button input[type='submit'],
+.signup-container a {
+  background-color: #00a65a;
+  color: white;
+  padding: 5px 15px;
+  border: 1px solid #008d4c;
+  width: 100px;
+}
+
+.signup-container a {
+  text-decoration: none;
+  width: 100px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.signup-container { 
+  height: 180px;
+}
